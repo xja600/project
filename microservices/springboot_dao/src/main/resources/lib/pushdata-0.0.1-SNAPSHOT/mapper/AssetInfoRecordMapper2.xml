@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.slabs.pushdata.dao.AssetInfoRecordMapper2" >
+  <resultMap id="BaseResultMap" type="com.slabs.pushdata.entity.AssetInfoRecordEntity" >
+    <id column="busi_no" property="busiNo" jdbcType="VARCHAR" />
+    <result column="project_id" property="projectId" jdbcType="VARCHAR" />
+    <result column="project_name" property="projectName" jdbcType="VARCHAR" />
+    <result column="project_init_date" property="projectInitDate" jdbcType="VARCHAR" />
+    <result column="project_End_date" property="projectEndDate" jdbcType="VARCHAR" />
+    <result column="mark_date" property="markDate" jdbcType="VARCHAR" />
+    <result column="asset_type" property="assetType" jdbcType="VARCHAR" />
+    <result column="asset_deal_type" property="assetDealType" jdbcType="VARCHAR" />
+    <result column="busi_no" property="busiNo" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="push_time" property="pushTime" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <insert id="insertAssetInfoRecord" parameterType="com.slabs.pushdata.entity.AssetInfoRecordEntity" >
+    insert into asset_info_record(busi_no,project_name,project_id,project_init_date,project_End_date,mark_date,asset_type,asset_deal_type,status,batch_no,push_time,create_time)
+    values (#{busiNo,jdbcType=VARCHAR}, #{projectName,jdbcType=VARCHAR}, #{projectId,jdbcType=VARCHAR},
+      #{projectInitDate,jdbcType=VARCHAR}, #{projectEndDate,jdbcType=VARCHAR}, #{markDate,jdbcType=VARCHAR},
+      #{assetType,jdbcType=VARCHAR},#{assetDealType,jdbcType=VARCHAR},#{status,jdbcType=VARCHAR},#{batchNo,jdbcType=VARCHAR},#{pushTime,jdbcType=VARCHAR},#{createTime,jdbcType=VARCHAR})
+  </insert>
+
+  <update id="updateStatusByBusiNosAndBatchNo">
+    update asset_info_record
+    set status = #{status,jdbcType=CHAR}
+    where
+    <if test="busiNos != null">
+      busi_no in
+      <foreach collection="busiNos" item="busiNo" separator="," open="(" close=")">
+        #{busiNo}
+      </foreach>
+    </if>
+    <if test="batchNo != null">
+     AND  batch_no = #{batchNo}
+    </if>
+  </update>
+
+  <select id="queryAssetInfoRecordByStatus" resultMap="BaseResultMap">
+    select busi_no,project_name,project_id,project_init_date,project_End_date,mark_date,asset_type,asset_deal_type from asset_info_record
+    where status = #{status} and batch_no = #{batchNo}
+  </select>
+
+  <select id="queryAssetInfoRecordBatchByStatus" resultType="java.lang.String">
+    select batch_no from asset_info_record
+    where status = #{status} group by batch_no
+  </select>
+</mapper>
