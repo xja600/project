@@ -1,0 +1,51 @@
+server:
+  port: 8771
+
+#指定注册中心地址
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+#服务的名称
+spring:
+  application:
+    name: eureka-client
+
+
+  # redis配置
+  redis:
+    host: localhost
+    port: 6379
+    database: 15
+
+
+ribbon:
+  eureka:
+    enabled: true
+
+#redis配置
+#spring.redis.host=192.168.34.206
+#spring.redis.port=6379
+#spring.redis.database=9
+#  spring.redis.password=
+#  spring.redis.timeout=1000
+#  spring.redis.jedis.pool.max-active=18
+#  spring.redis.jedis.pool.max-wait=-1
+#  spring.redis.jedis.pool.max-idle=18
+#  spring.redis.jedis.pool.min-idle=3
+#  cache.config.lock.enabled=true
+#  cache.config.expire.CodeLibrary=10
+#  cache.config.expire.key2=200
+#  cache.config.expire.key3=300
+
+
+
+#rocketmq
+apache:
+  rocketmq:
+    consumer:
+      PushConsumer: PushConsumer
+    producer:
+      producerGroup: Producer
+    namesrvAddr: localhost:9876
