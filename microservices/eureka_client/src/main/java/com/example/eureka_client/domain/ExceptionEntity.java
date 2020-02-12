@@ -1,6 +1,9 @@
 package com.example.eureka_client.domain;
 
+import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * @ClassName ExceptionEntity
@@ -10,7 +13,10 @@ import lombok.Data;
  * @Version 1.0
  **/
 
+/*@Setter
+@Getter*/
 @Data
+@Builder
 public class ExceptionEntity {
 
     private String description;
@@ -21,4 +27,35 @@ public class ExceptionEntity {
 
     private String params;
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
+    }
+
+    public String getMethodName() {
+        return methodName;
+    }
+
+    public void setMethodName(String methodName) {
+        this.methodName = methodName;
+    }
+
+    public String getParams() {
+        return params;
+    }
+
+    public void setParams(String params) {
+        this.params = params;
+    }
 }
