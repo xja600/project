@@ -45,10 +45,10 @@ public class Aspect {
             LOG.info("-----【{}】---- 退出Feign调用... request: 【{}】, response: 【{}】 :调用处理时间 【{}】", name, req, resp,(System.currentTimeMillis()-l));
             return proceed;
         } catch (SocketTimeoutException e){
-            log.error("feign_timeout", e);
+            LOG.error("feign_timeout", e);
             throw new CommonException(exceptionInfo(pjp));
         }catch (Exception e){
-            log.error("feign_aspect", e);
+            LOG.error("feign_aspect", e);
             throw new CommonException(exceptionInfo(pjp));
         }
     }
