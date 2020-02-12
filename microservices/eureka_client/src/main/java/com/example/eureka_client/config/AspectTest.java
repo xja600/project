@@ -49,7 +49,7 @@ public class AspectTest {
             return "原返回值：" + returnValue + "，这是返回结果的后缀";
 
         }catch (Exception e){
-            log.error("失败：", e);
+            LOG.error("失败：", e);
 //            throw new CommonException(exceptionInfo(point));
             throw new CommonException("失败："+e.getMessage());
         }
