@@ -1,9 +1,6 @@
 package com.example.eureka_client.domain;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 /**
  * @ClassName ExceptionEntity
@@ -17,6 +14,8 @@ import lombok.Setter;
 @Getter*/
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class ExceptionEntity {
 
     private String description;
