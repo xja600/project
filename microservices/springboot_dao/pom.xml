@@ -47,12 +47,11 @@
         @NoArgsConstructor
         @AllArgsConstructor
         @Builder  实现标签引用-->
-       <!-- <dependency>
-            <groupId>org.projectlombok</groupId>
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.16.10</version>
-        </dependency>-->
+        </dependency>
 
         <!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-generator -->
         <!--mybatis-plus-->
