@@ -7,9 +7,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.annotation.Resource;
+
 @Controller
 public class CodeLibraryController {
-    @Autowired
+//    @Autowired
+    @Resource
     private CodeLibraryService codeLibraryService;
 
     /**
