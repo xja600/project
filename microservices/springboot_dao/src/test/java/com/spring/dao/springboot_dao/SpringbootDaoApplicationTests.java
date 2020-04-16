@@ -1,7 +1,9 @@
 package com.spring.dao.springboot_dao;
 
 import com.spring.dao.entity.CodeLibrary;
+import com.spring.dao.entity.UserInfo;
 import com.spring.dao.mapper.CodeLibraryMapper;
+import com.spring.dao.mapper.UserInfoMapper;
 import com.spring.dao.test.CodeLibraryServiceImpl2;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,6 +28,8 @@ public class SpringbootDaoApplicationTests {
 //    RedisTemplate<String, Object> redisTemplate;
     @Autowired
     CodeLibraryMapper codeLibraryMapper;
+    @Autowired
+    UserInfoMapper userInfoMapper;
 //    @Autowired
 //    SLAssetInfoService2 assetInfoService2;
 
@@ -96,20 +100,35 @@ public class SpringbootDaoApplicationTests {
         logger.info("-------先清除缓存-------------");
         codeLibraryMapper.removeFromCache();
         logger.info("-------第一次查询-------------");
-        List<CodeLibrary> list =  codeLibraryMapper.getCodeNameByCodeNo("ApplyChannel");
+        List<CodeLibrary> list =  codeLibraryMapper.getCodeNameByCodeNo("YesNo");
         logger.info("list={}",list);
         logger.info("-------第二次查询-------------");//直接用了缓存的数据
-        List<CodeLibrary> list2 =  codeLibraryMapper.getCodeNameByCodeNo("ApplyChannel");
+        List<CodeLibrary> list2 =  codeLibraryMapper.getCodeNameByCodeNo("YesNo");
         logger.info("list2={}",list2);
         logger.info("-------清除缓存-------------");
         codeLibraryMapper.removeFromCache();
         logger.info("-------第三次查询-------------");//删除缓存数据后，重新去数据库查询了
-        List<CodeLibrary> list3 =  codeLibraryMapper.getCodeNameByCodeNo("ApplyChannel");
+        List<CodeLibrary> list3 =  codeLibraryMapper.getCodeNameByCodeNo("YesNo");
         logger.info("list3={}",list3);
+        String itemName =  codeLibraryMapper.getCodeNameByCodeNoAndItemNo("YesNo","1");
+        logger.info("itemName={}",itemName);
+
+
     }
 
 //    @CacheEvict(value = "codeLibraryCache1",allEntries = true,beforeInvocation = true)
 //    public void removeFromCache(){
 //
 //    }
+    @Test
+    public void getUserInfo(){
+        UserInfo userInfo = new UserInfo();
+        userInfo.setUserid("hp11");
+        userInfo.setStatus("2");
+        List<UserInfo> userInfoList = userInfoMapper.getUserInfo(userInfo);
+        logger.info("userInfoList={}",userInfoList);
+        logger.info("----------------分割綫----------------------------");
+        List<UserInfo> userInfoList2 = userInfoMapper.getUserInfo(userInfo);
+        logger.info("userInfoList2={}",userInfoList2);
+    }
 }

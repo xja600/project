@@ -143,11 +143,11 @@
             <systemPath>${basedir}/src/main/resources/lib/framework-common-0.1.62.jar</systemPath>
         </dependency>
 
-        <dependency>
-            <groupId>org.apache.rocketmq</groupId>
-            <artifactId>rocketmq-client</artifactId>
-            <version>4.2.0</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.apache.rocketmq</groupId>-->
+<!--            <artifactId>rocketmq-client</artifactId>-->
+<!--            <version>4.2.0</version>-->
+<!--        </dependency>-->
 
         <!-- oracle.jdbc.driver.OracleDriver
          参考文章： https://www.jianshu.com/p/c0b47f202a5a -->

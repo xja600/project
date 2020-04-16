@@ -14,11 +14,11 @@ public class RocketMqController {
 
     /*
     * postmane访问地址：http://localhost:8771/push?msg=hello
-    * 启动命令 ：nohup sh mqbroker -n localhost:9876 autoCreateTopicEnable=true &
+    * 启动命令 ：nohup sh broker -n localhost:9876 autoCreateTopicEnable=true &
     *
     * 报错 ： window  No route info of this topic, test1 --> rocketmq-client 版本改为 ：4.3.0 (https://blog.csdn.net/zzzgd_666/article/details/81481584)
     * cmd中执行命令开启服务：(https://www.cnblogs.com/gaoquanquan/p/10844320.html)
-    * start mqnamesrv
+    * start namesrv
     * start mqbroker -n 127.0.0.1:9876
     * mq界面工具地址： http://localhost:12581/#/
     */

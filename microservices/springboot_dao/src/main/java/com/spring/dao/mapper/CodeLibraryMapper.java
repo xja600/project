@@ -46,7 +46,7 @@ public interface CodeLibraryMapper extends BaseMapper<CodeLibrary> {
      //@Cacheable(value=“nameCache”)，这个注释的意思是，当调用这个方法的时候，会从一个名叫 nameCache 的缓存(缓存本质是一个map)中查询key为name的值，
      // 如果不存在，则执行实际的方法（即查询数据库等服务逻辑），并将执行的结果存入缓存中，否则返回缓存中的对象。这里的缓存中的 key 就是参数 name，value
      // 就是 返回的User 对象
-     @Cacheable(value="codeLibraryCache1")
+     @Cacheable(value="codeLibraryCache1",key="'abc'")
      List<CodeLibrary> getCodeNameByCodeNo(@Param("codeNo") String codeNo);
 
     @CacheEvict(value = "codeLibraryCache1",allEntries = true,beforeInvocation = true)
